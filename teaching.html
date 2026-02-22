@@ -108,6 +108,15 @@
       flex-wrap:wrap;
       margin:18px 0 18px 0;
     }
+    .search{
+      flex:1 1 240px;
+      min-width:220px;
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:10px;
+      font-size:14px;
+      outline:none;
+    }
     .chip{
       display:inline-flex;
       align-items:center;
@@ -250,8 +259,179 @@
       </p>
 
       <div class="controls">
-        <button class="chip" type="button">Fall 2025</button>
-        <button class="chip" type="button">Spring 2026</button>
-        <button class="chip" type="button">Graduate</button>
+        <input id="q" class="search" type="search" placeholder="Search courses (title, topic, term)..." />
+        <button class="chip" type="button" aria-pressed="false" data-filter="fall2025">Fall 2025</button>
+        <button class="chip" type="button" aria-pressed="false" data-filter="spring2026">Spring 2026</button>
+        <button class="chip" type="button" aria-pressed="false" data-filter="grad">Graduate</button>
       </div>
     </header>
+
+    <section class="grid">
+      <div class="card section">
+        <div class="term">Fall 2025</div>
+        <ul class="list">
+          <li class="item course" data-term="fall2025" data-level="ug">
+            <strong>NATO Security Architecture and Turkiye</strong>
+            <div class="meta">
+              <span>Fall 2025</span>
+              <span class="badge">Undergraduate / Graduate (TBD)</span>
+            </div>
+            <details>
+              <summary>Course overview</summary>
+              <p class="muted">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Topics may include alliance politics, deterrence, force posture, regional dynamics, and policy analysis.
+              </p>
+            </details>
+          </li>
+
+          <li class="item course" data-term="fall2025" data-level="ug">
+            <strong>Research Methods</strong>
+            <div class="meta">
+              <span>Fall 2025</span>
+              <span class="badge">Methods</span>
+            </div>
+            <details>
+              <summary>Course overview</summary>
+              <p class="muted">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                Coverage may include research design, qualitative and quantitative approaches, measurement, and writing a research proposal.
+              </p>
+            </details>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card section">
+        <div class="term">Spring 2026</div>
+        <ul class="list">
+          <li class="item course" data-term="spring2026" data-level="ug">
+            <strong>Technology and National Security</strong>
+            <div class="meta">
+              <span>Spring 2026</span>
+              <span class="badge">Seminar (TBD)</span>
+            </div>
+            <details>
+              <summary>Course overview</summary>
+              <p class="muted">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse.
+                Topics may include AI, cyber operations, autonomy, intelligence, governance, and strategic competition.
+              </p>
+            </details>
+          </li>
+
+          <li class="item course" data-term="spring2026" data-level="ug">
+            <strong>Sectoral Practices in Defense Industry</strong>
+            <div class="meta">
+              <span>Spring 2026</span>
+              <span class="badge">Applied</span>
+            </div>
+            <details>
+              <summary>Course overview</summary>
+              <p class="muted">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis ipsum suspendisse ultrices gravida.
+                Coverage may include procurement, offsets, industrial policy, innovation ecosystems, export controls, and case studies.
+              </p>
+            </details>
+          </li>
+
+          <li class="item course" data-term="spring2026" data-level="grad">
+            <strong>Graduate Dissertation Seminar</strong>
+            <div class="meta">
+              <span>Spring 2026</span>
+              <span class="badge">Graduate</span>
+            </div>
+            <details>
+              <summary>Course overview</summary>
+              <p class="muted">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+                A workshop format focused on question refinement, theory, methods alignment, chapter planning, and peer feedback.
+              </p>
+            </details>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card section">
+        <h2>Supervision &amp; Mentoring</h2>
+        <p class="muted">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. If you are interested in thesis supervision, send an email with your topic,
+          a short bibliography, and your timeline.
+        </p>
+        <hr class="rule" />
+        <ul class="list">
+          <li class="item">
+            <strong>Suggested thesis themes</strong>
+            <span>AI governance, defense innovation, alliance politics, strategic competition, security institutions.</span>
+          </li>
+          <li class="item">
+            <strong>What to include in your email</strong>
+            <span>Research question, motivation, data/materials, methods (if known), and expected milestones.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card section">
+        <h2>Policies</h2>
+        <p class="muted">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Course materials and schedules may change. Accessibility and academic integrity
+          policies apply per institutional guidelines.
+        </p>
+        <hr class="rule" />
+        <div class="meta">
+          <a class="btn" href="#" target="_blank" rel="noopener">Syllabus template (TBD)</a>
+          <a class="btn" href="#" target="_blank" rel="noopener">Office hours (TBD)</a>
+          <span class="badge">Update these links later</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="y"></span> Ozan Ahmet Cetin · Built with GitHub Pages
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    const q = document.getElementById('q');
+    const chips = Array.from(document.querySelectorAll('.chip'));
+    const courses = Array.from(document.querySelectorAll('.course'));
+
+    function activeFilters(){
+      const on = chips.filter(c => c.getAttribute('aria-pressed') === 'true').map(c => c.dataset.filter);
+      if (on.length === 0) return null;
+      return new Set(on);
+    }
+
+    function apply(){
+      const term = (q.value || '').trim().toLowerCase();
+      const filters = activeFilters();
+
+      courses.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        const matchesText = term === '' || text.includes(term);
+
+        const matchesFilter = !filters || (
+          (filters.has('fall2025') && card.dataset.term === 'fall2025') ||
+          (filters.has('spring2026') && card.dataset.term === 'spring2026') ||
+          (filters.has('grad') && card.dataset.level === 'grad')
+        );
+
+        card.style.display = (matchesText && matchesFilter) ? '' : 'none';
+      });
+    }
+
+    q.addEventListener('input', apply);
+    chips.forEach(c => {
+      c.addEventListener('click', () => {
+        const pressed = c.getAttribute('aria-pressed') === 'true';
+        c.setAttribute('aria-pressed', String(!pressed));
+        apply();
+      });
+    });
+
+    apply();
+  </script>
+</body>
+</html>
