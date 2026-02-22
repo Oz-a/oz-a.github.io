@@ -3,16 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Publications | Ozan A. Cetin</title>
-  <meta name="description" content="Publications of Ozan A. Cetin" />
+  <title>Publications | Ozan Ahmet Cetin</title>
+  <meta name="description" content="Publications of Ozan Ahmet Cetin" />
+
   <style>
     :root{
       --text:#111;
       --muted:#666;
       --line:#e8e8e8;
       --bg:#fff;
-      --chip:#f6f6f6;
       --link:#0b57d0;
+      --shadow: 0 10px 30px rgba(0,0,0,0.06);
     }
     *{box-sizing:border-box}
     body{
@@ -20,15 +21,64 @@
       background:var(--bg);
       color:var(--text);
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,Helvetica,Arial,sans-serif;
-      line-height:1.6;
+      line-height:1.65;
     }
     .wrap{
-      max-width:900px;
+      max-width:980px;
       margin:48px auto;
       padding:0 20px;
     }
-    header{
-      margin-bottom:28px;
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 16px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fff;
+      position:sticky;
+      top:14px;
+      box-shadow: 0 2px 18px rgba(0,0,0,0.04);
+      z-index:10;
+    }
+    .brand{
+      font-weight:650;
+      font-size:14px;
+    }
+    nav{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      font-size:14px;
+    }
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      padding:6px 10px;
+      border-radius:999px;
+    }
+    nav a:hover{
+      color:var(--text);
+      background:#f6f6f6;
+    }
+    .cta{
+      color:var(--link);
+      border:1px solid var(--line);
+      background:#fff;
+    }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:#fff;
+      box-shadow:var(--shadow);
+    }
+
+    header.page{
+      margin-top:22px;
+      padding:22px;
     }
     h1{
       font-size:28px;
@@ -40,62 +90,12 @@
       color:var(--muted);
       font-size:15px;
     }
-    nav{
-      margin-top:18px;
-      font-size:14px;
-      color:var(--muted);
-    }
-    nav a{
-      color:var(--muted);
-      text-decoration:none;
-    }
-    nav a:hover{
-      color:var(--text);
-      text-decoration:underline;
-    }
-    .rule{
-      border:0;
-      border-top:1px solid var(--line);
-      margin:22px 0 0 0;
-    }
-    .controls{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin:22px 0 18px 0;
-    }
-    .search{
-      flex:1 1 240px;
-      min-width:220px;
-      padding:10px 12px;
-      border:1px solid var(--line);
-      border-radius:10px;
-      font-size:14px;
-      outline:none;
-    }
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:9px 12px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background:var(--chip);
-      font-size:13px;
-      color:var(--text);
-      cursor:pointer;
-      user-select:none;
-    }
-    .chip[aria-pressed="true"]{
-      border-color:#cfd8ff;
-      background:#eef2ff;
-    }
 
     .year{
       margin-top:26px;
-      margin-bottom:10px;
-      font-size:14px;
-      letter-spacing:0.06em;
+      margin-bottom:12px;
+      font-size:13px;
+      letter-spacing:0.08em;
       color:var(--muted);
       text-transform:uppercase;
     }
@@ -107,14 +107,11 @@
       border-top:1px solid var(--line);
     }
     .pub{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:10px;
-      padding:18px 0;
+      padding:20px 0;
       border-bottom:1px solid var(--line);
     }
 
-    /* APA-ish hanging indent */
+    /* APA hanging indent */
     .apa{
       font-size:15px;
       margin:0;
@@ -127,17 +124,17 @@
     .source{
       font-style:italic;
     }
-    .meta{
+
+    .links{
+      margin-top:10px;
+      margin-left:22px;
       display:flex;
       flex-wrap:wrap;
       gap:8px;
-      align-items:center;
-      margin-left:22px; /* align with APA block */
     }
     .btn{
       display:inline-flex;
       align-items:center;
-      gap:6px;
       padding:7px 10px;
       border:1px solid var(--line);
       border-radius:999px;
@@ -150,171 +147,102 @@
       border-color:#d6d6d6;
       background:#fafafa;
     }
-    .badge{
-      font-size:12px;
-      color:var(--muted);
-      border:1px solid var(--line);
-      padding:4px 8px;
-      border-radius:999px;
-      background:#fff;
-    }
+
     footer{
-      margin-top:34px;
+      margin:28px 2px 10px 2px;
       color:var(--muted);
       font-size:13px;
     }
-    .note{
-      margin:0;
-    }
   </style>
 </head>
+
 <body>
   <div class="wrap">
-    <header>
-      <h1>Publications</h1>
-      <p class="sub">Ozan A. Cetin</p>
+    <div class="topbar">
+      <div class="brand">Ozan Ahmet Cetin</div>
       <nav>
-        <a href="index.html">Home</a> ·
-        <a href="publications.html">Publications</a> ·
-        <a href="teaching.html">Teaching</a> ·
-        <a href="cv.pdf">CV</a>
+        <a href="index.html">Home</a>
+        <a href="publications.html" aria-current="page">Publications</a>
+        <a href="teaching.html">Teaching</a>
+        <a class="cta" href="cv.pdf">CV</a>
       </nav>
-      <hr class="rule" />
-    </header>
-
-    <div class="controls">
-      <input id="q" class="search" type="search" placeholder="Search publications (title, venue, coauthor)..." />
-      <button class="chip" type="button" aria-pressed="false" data-filter="books">Books</button>
-      <button class="chip" type="button" aria-pressed="false" data-filter="articles">Articles</button>
-      <button class="chip" type="button" aria-pressed="false" data-filter="chapters">Chapters</button>
     </div>
 
-    <div class="year">2025</div>
-    <ol class="pubs" id="pubs">
+    <header class="card page">
+      <h1>Publications</h1>
+      <p class="sub">APA-style listing of books, articles, and chapters.</p>
+    </header>
 
-      <li class="pub" data-type="books">
+    <ul class="pubs">
+
+      <li class="pub">
         <p class="apa">
           Cetin, O. A., &amp; Kanat, K. B. (2025).
           <span class="title">Allies in Arms: Turkish-American Defense Relations</span>.
           <span class="source">Palgrave Macmillan</span>.
         </p>
-        <div class="meta">
-          <a class="btn" href="https://link.springer.com/content/pdf/10.1007/978-3-031-96062-8.pdf" target="_blank" rel="noopener">PDF</a>
-          <a class="btn" href="https://link.springer.com/book/10.1007/978-3-031-96062-8" target="_blank" rel="noopener">Publisher page</a>
-          <span class="badge">Book</span>
+        <div class="links">
+          <a class="btn" href="https://link.springer.com/content/pdf/10.1007/978-3-031-96062-8.pdf" target="_blank">PDF</a>
         </div>
       </li>
 
-      <li class="pub" data-type="articles">
+      <li class="pub">
         <p class="apa">
           Cetin, O. A., &amp; Kesvelioglu, A. (2025).
           <span class="title">Artificial Intelligence in National Security: Strategic Priorities of Turkiye and the UAE</span>.
           <span class="source">Insight Turkey</span>.
         </p>
-        <div class="meta">
-          <a class="btn" href="https://www.jstor.org/stable/48829614" target="_blank" rel="noopener">JSTOR</a>
-          <!-- If you have a DOI URL, replace the # and label will work nicely -->
-          <!-- <a class="btn" href="https://doi.org/XXXXX" target="_blank" rel="noopener">DOI</a> -->
-          <span class="badge">Article</span>
+        <div class="links">
+          <a class="btn" href="https://www.jstor.org/stable/48829614" target="_blank">JSTOR</a>
         </div>
       </li>
 
-      <li class="pub" data-type="chapters">
+      <li class="pub">
         <p class="apa">
           Cetin, O. A. (2025).
           <span class="title">The AI Revolution in National Security: Threats, Opportunities, and Governance</span>.
           In <span class="source">Understanding of the Digital Era: Unveiling the Dark Sides of Technology</span>.
           <span class="source">Istanbul University Press</span>.
-          <span>https://doi.org/10.26650/B/SSc5.2025.016</span>
+          https://doi.org/10.26650/B/SSc5.2025.016
         </p>
-        <div class="meta">
-          <a class="btn" href="https://iupress.istanbul.edu.tr/book/understanding-of-the-digital-era-unveiling-the-dark-sides-of-technology/home" target="_blank" rel="noopener">Publisher page</a>
-          <a class="btn" href="https://doi.org/10.26650/B/SSc5.2025.016" target="_blank" rel="noopener">DOI</a>
-          <span class="badge">Chapter</span>
+        <div class="links">
+          <a class="btn" href="https://iupress.istanbul.edu.tr/book/understanding-of-the-digital-era-unveiling-the-dark-sides-of-technology/home" target="_blank">Publisher page</a>
         </div>
       </li>
 
-      <li class="pub" data-type="chapters">
+      <li class="pub">
         <p class="apa">
           Cetin, O. A. (2025).
           <span class="title">Kultur ve Kimlik Politikalari: Amerikali Kimdir?</span>
-          In K. B. Kanat &amp; K. Ustun (Eds.), <span class="source">Trump&#39;ın Amerikası</span>.
+          In K. B. Kanat &amp; K. Ustun (Eds.), <span class="source">Trump'ın Amerikası</span>.
           <span class="source">SETA Press</span>.
         </p>
-        <div class="meta">
-          <a class="btn" href="https://www.setav.org/kitap-trumpin-amerikasi" target="_blank" rel="noopener">Publisher page</a>
-          <span class="badge">Chapter</span>
+        <div class="links">
+          <a class="btn" href="https://www.setav.org/kitap-trumpin-amerikasi" target="_blank">Publisher page</a>
         </div>
       </li>
 
-      <li class="pub" data-type="chapters">
+      <li class="pub">
         <p class="apa">
           Cetin, O. A. (2025).
           <span class="title">Populizmin Yukselisi</span>.
-          In K. B. Kanat &amp; K. Ustun (Eds.), <span class="source">Trump&#39;ın Amerikası</span>.
+          In K. B. Kanat &amp; K. Ustun (Eds.), <span class="source">Trump'ın Amerikası</span>.
           <span class="source">SETA Press</span>.
         </p>
-        <div class="meta">
-          <a class="btn" href="https://www.setav.org/kitap-trumpin-amerikasi" target="_blank" rel="noopener">Publisher page</a>
-          <span class="badge">Chapter</span>
+        <div class="links">
+          <a class="btn" href="https://www.setav.org/kitap-trumpin-amerikasi" target="_blank">Publisher page</a>
         </div>
       </li>
 
-      <li class="pub" data-type="chapters">
-        <p class="apa">
-          Cetin, O. A. (2024).
-          <span class="title">Turkiye's Domestic Defense Industry: Promises and Challenges</span>.
-          In B. Duran &amp; K. B. Kanat (Eds.), <span class="source">Türkiye’s Vision for Its New Century</span>.
-          <span class="source">SETA Press</span>.
-        </p>
-        <div class="meta">
-          <a class="btn" href="https://www.setav.org/en/turkiyes-vision-for-its-new-century" target="_blank" rel="noopener">Publisher page</a>
-          <span class="badge">Chapter</span>
-        </div>
-      </li>
-
-    </ol>
+    </ul>
 
     <footer>
-      <p class="note">Formatting follows an APA-style author–date structure; links go to stable sources when available.</p>
+      © <span id="y"></span> Ozan Ahmet Cetin · Built with GitHub Pages
     </footer>
   </div>
 
   <script>
-    const q = document.getElementById('q');
-    const chips = Array.from(document.querySelectorAll('.chip'));
-    const pubs = Array.from(document.querySelectorAll('#pubs .pub'));
-
-    function activeTypes(){
-      const on = chips.filter(c => c.getAttribute('aria-pressed') === 'true').map(c => c.dataset.filter);
-      if (on.length === 0) return null;
-      // Map filter buttons to data-type values
-      const map = { books:'books', articles:'articles', chapters:'chapters' };
-      return new Set(on.map(k => map[k]));
-    }
-
-    function apply(){
-      const term = (q.value || '').trim().toLowerCase();
-      const types = activeTypes();
-
-      pubs.forEach(li => {
-        const text = li.innerText.toLowerCase();
-        const matchesText = term === '' || text.includes(term);
-        const matchesType = !types || types.has(li.dataset.type);
-        li.style.display = (matchesText && matchesType) ? '' : 'none';
-      });
-    }
-
-    q.addEventListener('input', apply);
-    chips.forEach(c => {
-      c.addEventListener('click', () => {
-        const pressed = c.getAttribute('aria-pressed') === 'true';
-        c.setAttribute('aria-pressed', String(!pressed));
-        apply();
-      });
-    });
-
-    apply();
+    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
