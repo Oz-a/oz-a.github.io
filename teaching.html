@@ -12,6 +12,7 @@
       --muted:#666;
       --line:#e8e8e8;
       --bg:#fff;
+      --chip:#f6f6f6;
       --link:#0b57d0;
       --shadow: 0 10px 30px rgba(0,0,0,0.06);
     }
@@ -46,11 +47,14 @@
     .brand{
       font-weight:650;
       font-size:14px;
+      letter-spacing:0.01em;
+      white-space:nowrap;
     }
     nav{
       display:flex;
       gap:12px;
       flex-wrap:wrap;
+      justify-content:flex-end;
       font-size:14px;
     }
     nav a{
@@ -61,12 +65,17 @@
     }
     nav a:hover{
       color:var(--text);
-      background:#f6f6f6;
+      background:var(--chip);
+      text-decoration:none;
     }
     .cta{
       color:var(--link);
       border:1px solid var(--line);
       background:#fff;
+    }
+    .cta:hover{
+      border-color:#d6d6d6;
+      background:#fafafa;
     }
 
     .card{
@@ -78,18 +87,43 @@
 
     header.page{
       margin-top:22px;
-      padding:22px;
+      padding:22px 22px;
     }
     h1{
       font-size:28px;
-      margin:0 0 8px 0;
+      margin:0 0 6px 0;
       letter-spacing:-0.02em;
+      line-height:1.2;
     }
     .sub{
       margin:0;
       color:var(--muted);
       font-size:15px;
       max-width:70ch;
+    }
+
+    .controls{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin:18px 0 18px 0;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:var(--chip);
+      font-size:13px;
+      color:var(--text);
+      cursor:pointer;
+      user-select:none;
+    }
+    .chip[aria-pressed="true"]{
+      border-color:#cfd8ff;
+      background:#eef2ff;
     }
 
     .grid{
@@ -104,41 +138,77 @@
     }
 
     .section{
-      padding:20px;
+      padding:20px 20px;
     }
+    .section h2{
+      margin:0 0 10px 0;
+      font-size:16px;
+      letter-spacing:-0.01em;
+    }
+    .muted{ color:var(--muted); }
+
     .term{
+      margin-top:8px;
+      margin-bottom:10px;
       font-size:13px;
       letter-spacing:0.08em;
       color:var(--muted);
       text-transform:uppercase;
-      margin-bottom:12px;
     }
 
     .list{
-      list-style:none;
+      margin:10px 0 0 0;
       padding:0;
-      margin:0;
+      list-style:none;
       display:grid;
-      gap:12px;
+      gap:10px;
     }
     .item{
-      padding:14px;
+      padding:12px 12px;
       border:1px solid var(--line);
       border-radius:14px;
       background:#fff;
     }
     .item strong{
       display:block;
-      font-size:15px;
-      margin-bottom:6px;
+      font-size:14px;
+      margin-bottom:4px;
     }
     .meta{
-      font-size:13px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      align-items:center;
       color:var(--muted);
-      margin-bottom:8px;
+      font-size:13px;
+    }
+    .badge{
+      font-size:12px;
+      color:var(--muted);
+      border:1px solid var(--line);
+      padding:4px 8px;
+      border-radius:999px;
+      background:#fff;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:7px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:#fff;
+      font-size:13px;
+      text-decoration:none;
+      color:var(--link);
+    }
+    .btn:hover{
+      border-color:#d6d6d6;
+      background:#fafafa;
     }
     details{
-      margin-top:6px;
+      margin-top:10px;
+      padding-left:2px;
     }
     summary{
       cursor:pointer;
@@ -152,6 +222,11 @@
       margin:28px 2px 10px 2px;
       color:var(--muted);
       font-size:13px;
+    }
+    .rule{
+      border:0;
+      border-top:1px solid var(--line);
+      margin:14px 0;
     }
   </style>
 </head>
@@ -171,91 +246,12 @@
     <header class="card page">
       <h1>Teaching</h1>
       <p class="sub">
-        Courses focus on international security, defense policy, emerging technologies, and research design.
+        Current and planned courses. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
       </p>
+
+      <div class="controls">
+        <button class="chip" type="button">Fall 2025</button>
+        <button class="chip" type="button">Spring 2026</button>
+        <button class="chip" type="button">Graduate</button>
+      </div>
     </header>
-
-    <section class="grid">
-
-      <div class="card section">
-        <div class="term">Fall 2025</div>
-        <ul class="list">
-          <li class="item">
-            <strong>NATO Security Architecture and Turkiye</strong>
-            <div class="meta">Fall 2025</div>
-            <details>
-              <summary>Course overview</summary>
-              <p>
-                Examination of NATO’s institutional structure, strategic concepts, deterrence posture,
-                alliance politics, and Turkiye’s evolving role within transatlantic security.
-              </p>
-            </details>
-          </li>
-
-          <li class="item">
-            <strong>Research Methods</strong>
-            <div class="meta">Fall 2025</div>
-            <details>
-              <summary>Course overview</summary>
-              <p>
-                Introduction to research design in international relations, including theory building,
-                qualitative and quantitative approaches, causal inference, and proposal development.
-              </p>
-            </details>
-          </li>
-        </ul>
-      </div>
-
-      <div class="card section">
-        <div class="term">Spring 2026</div>
-        <ul class="list">
-          <li class="item">
-            <strong>Technology and National Security</strong>
-            <div class="meta">Spring 2026</div>
-            <details>
-              <summary>Course overview</summary>
-              <p>
-                Analysis of artificial intelligence, cyber operations, autonomy, intelligence systems,
-                and the strategic implications of emerging technologies for statecraft and defense.
-              </p>
-            </details>
-          </li>
-
-          <li class="item">
-            <strong>Sectoral Practices in Defense Industry</strong>
-            <div class="meta">Spring 2026</div>
-            <details>
-              <summary>Course overview</summary>
-              <p>
-                Study of procurement systems, defense industrial policy, innovation ecosystems,
-                export controls, and case studies from comparative defense sectors.
-              </p>
-            </details>
-          </li>
-
-          <li class="item">
-            <strong>Graduate Dissertation Seminar</strong>
-            <div class="meta">Spring 2026</div>
-            <details>
-              <summary>Course overview</summary>
-              <p>
-                Workshop-based seminar guiding dissertation development, research design refinement,
-                chapter planning, and structured peer feedback.
-              </p>
-            </details>
-          </li>
-        </ul>
-      </div>
-
-    </section>
-
-    <footer>
-      © <span id="y"></span> Ozan Ahmet Cetin · Built with GitHub Pages
-    </footer>
-  </div>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
